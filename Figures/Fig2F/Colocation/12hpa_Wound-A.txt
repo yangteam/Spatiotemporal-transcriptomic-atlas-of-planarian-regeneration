@@ -1,0 +1,8 @@
+	Epidermal	Gut	Muscle	Neoblast	Neuronal	Parenchymal	Secretory
+Epidermal	0	25	63	27	68	36	6
+Gut	25	0	33	152	20	72	16
+Muscle	63	33	0	47	40	34	11
+Neoblast	27	152	47	0	111	181	141
+Neuronal	68	20	40	111	0	31	49
+Parenchymal	36	72	34	181	31	0	63
+Secretory	6	16	11	141	49	63	0
