@@ -4,32 +4,32 @@ library(ggplot2)
 library(patchwork)
 library(viridis)
 
-load('/xtdisk/yangyg_group/zhoujy/ST/normalizeddata/cut12h.Robj')
+load('./normalizeddata/cut12h.Robj')
 DefaultAssay(cut12h)<- "Spatial"
 
 #Load the Modules of cut12h data
 geneTable<-read.table('./hotspot/cut12h/Module.txt',sep=" ",header=1)
 rownames(geneTable)<-geneTable$Gene
 
-geneTable[geneTable[,"Module"]==1,"Module_new"] <- 10
-geneTable[geneTable[,"Module"]==2,"Module_new"] <- 5
-geneTable[geneTable[,"Module"]==3,"Module_new"] <- 6
-geneTable[geneTable[,"Module"]==4,"Module_new"] <- 1
-geneTable[geneTable[,"Module"]==5,"Module_new"] <- 14
-geneTable[geneTable[,"Module"]==6,"Module_new"] <- 7
-geneTable[geneTable[,"Module"]==7,"Module_new"] <- 8
-geneTable[geneTable[,"Module"]==8,"Module_new"] <- 9
-geneTable[geneTable[,"Module"]==9,"Module_new"] <- 4
-geneTable[geneTable[,"Module"]==10,"Module_new"] <- 5
-geneTable[geneTable[,"Module"]==11,"Module_new"] <- 2
-geneTable[geneTable[,"Module"]==12,"Module_new"] <- 11
-geneTable[geneTable[,"Module"]==13,"Module_new"] <- 5
-geneTable[geneTable[,"Module"]==14,"Module_new"] <- 13
-geneTable[geneTable[,"Module"]==15,"Module_new"] <-15
-geneTable[geneTable[,"Module"]==16,"Module_new"] <-12
-geneTable[geneTable[,"Module"]==17,"Module_new"] <- 3
-geneTable[geneTable[,"Module"]==18,"Module_new"] <- 14
-geneTable[geneTable[,"Module"]==19,"Module_new"] <- 13
+# geneTable[geneTable[,"Module"]==1,"Module_new"] <- 10
+# geneTable[geneTable[,"Module"]==2,"Module_new"] <- 5
+# geneTable[geneTable[,"Module"]==3,"Module_new"] <- 6
+# geneTable[geneTable[,"Module"]==4,"Module_new"] <- 1
+# geneTable[geneTable[,"Module"]==5,"Module_new"] <- 14
+# geneTable[geneTable[,"Module"]==6,"Module_new"] <- 7
+# geneTable[geneTable[,"Module"]==7,"Module_new"] <- 8
+# geneTable[geneTable[,"Module"]==8,"Module_new"] <- 9
+# geneTable[geneTable[,"Module"]==9,"Module_new"] <- 4
+# geneTable[geneTable[,"Module"]==10,"Module_new"] <- 5
+# geneTable[geneTable[,"Module"]==11,"Module_new"] <- 2
+# geneTable[geneTable[,"Module"]==12,"Module_new"] <- 11
+# geneTable[geneTable[,"Module"]==13,"Module_new"] <- 5
+# geneTable[geneTable[,"Module"]==14,"Module_new"] <- 13
+# geneTable[geneTable[,"Module"]==15,"Module_new"] <-15
+# geneTable[geneTable[,"Module"]==16,"Module_new"] <-12
+# geneTable[geneTable[,"Module"]==17,"Module_new"] <- 3
+# geneTable[geneTable[,"Module"]==18,"Module_new"] <- 14
+# geneTable[geneTable[,"Module"]==19,"Module_new"] <- 13
 
 
 #Calculate Score of Each Module
