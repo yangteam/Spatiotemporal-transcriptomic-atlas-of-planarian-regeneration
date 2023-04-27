@@ -28,7 +28,7 @@ sc.pp.neighbors(adata, n_neighbors=10, n_pcs=40)
 sc.tl.umap(adata, init_pos='paga')
 sc.tl.louvain(adata)
 
-adata_ref = sc.read_h5ad("/xtdisk/yangyg_group/zhoujy/ST/adata_scRNA_Annotated.h5ad")
+adata_ref = sc.read_h5ad("adata_scRNA_Annotated.h5ad")
 
 var_names = adata_ref.var_names.intersection(adata.var_names)
 adata_ref = adata_ref[:, var_names]
