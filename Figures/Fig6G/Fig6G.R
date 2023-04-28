@@ -1,5 +1,4 @@
 
-#后面暂时删减了基因，主要是表达数量少，以及加上了几个专门提的基因
 gene<-read.table('gene.txt',header=F)
 cd_genes <- as.character(gene$V1)
 gene_name<-read.table('genename.txt',header=F)

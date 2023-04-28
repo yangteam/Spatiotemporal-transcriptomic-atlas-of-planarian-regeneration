@@ -76,13 +76,13 @@ for each in lab:
         selectall.append(temp)
 
 
-## 绘图
+## Plot
 
 fig, ax = plt.subplots()
 
-# 设置x，y值域
+# The range of x and y
 ax.set_xlim(left=0, right=8000)
-ax.set_ylim(bottom=6000, top=0)  # 此处将原点设置为左上角
+ax.set_ylim(bottom=6000, top=0) 
 plt.axis('off')
 
 
@@ -131,13 +131,12 @@ for each in fill:
 plt.savefig("0h_"+spot+"_mergedata_HE.pdf", dpi=300)
 #plt.clf()
 
-# ## 绘图
+# ## Plot
 #
 # fig, ax = plt.subplots()
 #
-# # 设置x，y值域
 # ax.set_xlim(left=0, right=8000)
-# ax.set_ylim(bottom=6000, top=0)  # 此处将原点设置为左上角
+# ax.set_ylim(bottom=6000, top=0)
 # plt.axis('off')
 #
 #

@@ -52,7 +52,7 @@ img_spot = {"img7": "spot1", "img9": "spot2", "img12": "spot3", "img14": "spot4"
 ############################
 
 ##
-def Srotate(angle, valuex, valuey, pointx, pointy):#顺时针旋转
+def Srotate(angle, valuex, valuey, pointx, pointy):
 
     sRotatex = (valuex-pointx)*math.cos(angle) + (valuey-pointy)*math.sin(angle) + pointx
     sRotatey = (valuey-pointy)*math.cos(angle) - (valuex-pointx)*math.sin(angle) + pointy
@@ -61,7 +61,7 @@ def Srotate(angle, valuex, valuey, pointx, pointy):#顺时针旋转
 
 
 ##
-def Nrotate(angle, valuex, valuey, pointx, pointy):#逆时针旋转
+def Nrotate(angle, valuex, valuey, pointx, pointy):
 
     nRotatex = (valuex-pointx)*math.cos(angle) - (valuey-pointy)*math.sin(angle) + pointx
     nRotatey = (valuex-pointx)*math.sin(angle) + (valuey-pointy)*math.cos(angle) + pointy
@@ -158,28 +158,23 @@ def get_rawspot(fname, fslide, rawindex, spotnum):
     else:
         xleft, yleft, xright, yright, direction = Transmessage[spotnum]
 
-        # 特征点坐标
-        x3 = float(xleft) - resetx  # 旋转后在基底坐标-图1上坐标
+        x3 = float(xleft) - resetx  
         y3 = float(yleft) - resety
         basex1 = 0
         basey1 = 0
         x4 = float(xright) - resetx
         y4 = float(yright) - resety
-        basex2 = float(imgx)  # 截图尺寸
-        basey2 = float(imgy)  # 截图尺寸
+        basex2 = float(imgx)  
+        basey2 = float(imgy) 
 
-        # 计算平移量和旋转角度
-        # 平移
         x_shift = x3 - basex1
         y_shift = y3 - basey1
-        # 旋转(底图左上点为坐标原点，以其为旋转中心)
         a = math.sqrt((x4 - (basex2 + x_shift)) ** 2 + (y4 - (basey2 + y_shift)) ** 2)
         b = math.sqrt((x4 - x3) ** 2 + (y4 - y3) ** 2)
         c = math.sqrt(((basex2 + x_shift) - x3) ** 2 + (((basey2 + y_shift)) - y3) ** 2)
         A = math.acos((a ** 2 - b ** 2 - c ** 2) / (-2 * b * c))
         # print(A)
 
-        # 根据计算所得的变换参数对全坐标进行坐标变换
         finaldata = []
         direction = direction
 
@@ -188,10 +183,8 @@ def get_rawspot(fname, fslide, rawindex, spotnum):
             each_line[0] = float(each[0]) + x_shift
             each_line[1] = float(each[1]) + y_shift
             if direction == "S":
-                # 顺时针
                 each_line[0], each_line[1] = Srotate(A, each_line[0], each_line[1], x3, y3)
             if direction == "N":
-                # 逆时针
                 each_line[0], each_line[1] = Nrotate(A, each_line[0], each_line[1], x3, y3)
             finaldata.append(each_line)
 
@@ -201,7 +194,7 @@ def get_rawspot(fname, fslide, rawindex, spotnum):
 ##
 def get_spotfill(fname, fillindex, spotnum):
 
-    xy = open(fname, 'r')  # fname输入时加引号
+    xy = open(fname, 'r') 
     point = xy.read()
     xy.close()
     l1 = point.replace('\n', '\t')
@@ -227,28 +220,23 @@ def get_spotfill(fname, fillindex, spotnum):
     else:
         xleft, yleft, xright, yright, direction = Transmessage[spotnum]
 
-        #特征点坐标
-        x3 = float(xleft) - resetx  # 旋转后在基底坐标-图1上坐标
+        x3 = float(xleft) - resetx 
         y3 = float(yleft) - resety
         basex1 = 0
         basey1 = 0
         x4 = float(xright) - resetx
         y4 = float(yright) - resety
-        basex2 = float(imgx)  # 截图尺寸
-        basey2 = float(imgy)  # 截图尺寸
+        basex2 = float(imgx)  
+        basey2 = float(imgy) 
 
-        # 计算平移量和旋转角度
-        # 平移
         x_shift = x3 - basex1
         y_shift = y3 - basey1
-        # 旋转(底图左上点为坐标原点，以其为旋转中心)
         a = math.sqrt((x4 - (basex2 + x_shift)) ** 2 + (y4 - (basey2 + y_shift)) ** 2)
         b = math.sqrt((x4 - x3) ** 2 + (y4 - y3) ** 2)
         c = math.sqrt(((basex2 + x_shift) - x3) ** 2 + (((basey2 + y_shift)) - y3) ** 2)
         A = math.acos((a ** 2 - b ** 2 - c ** 2) / (-2 * b * c))
         # print(A)
 
-        # 根据计算所得的变换参数对全坐标进行坐标变换
         finaldata = []
         direction = direction
 
@@ -257,10 +245,8 @@ def get_spotfill(fname, fillindex, spotnum):
             each_line[0] = float(each[0]) + x_shift
             each_line[1] = float(each[1]) + y_shift
             if direction == "S":
-                # 顺时针
                 each_line[0], each_line[1] = Srotate(A, each_line[0], each_line[1], x3, y3)
             if direction == "N":
-                # 逆时针
                 each_line[0], each_line[1] = Nrotate(A, each_line[0], each_line[1], x3, y3)
             finaldata.append(each_line)
 
@@ -333,7 +319,7 @@ def get_basespot(fname1, fname2):
 
     ##fname2
 
-    xy = open(fname2, 'r')  # fname输入时加引号
+    xy = open(fname2, 'r') 
     point = xy.read()
     xy.close()
     l1 = point.replace('\n', '\t')
@@ -354,7 +340,6 @@ def get_basespot(fname1, fname2):
     return BaseData
 
 
-###########时间戳############
 
 localtime_start = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 print("start:"+localtime_start)
@@ -509,9 +494,8 @@ for i in range(len(AA)):
 fig, ax = plt.subplots()
 #fig, ax = plt.subplots(facecolor='gray')
 
-# 设置x，y值域
 ax.set_xlim(left=0, right=8000)
-ax.set_ylim(bottom=6000, top=0)  #此处将原点设置为左上角
+ax.set_ylim(bottom=6000, top=0) 
 
 plt.axis('off')
 
